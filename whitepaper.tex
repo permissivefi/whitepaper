@@ -9,7 +9,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-    Our startup is developing an Account Abstraction EIP 4337 for permission-based authentication on the blockchain. This solution aims to simplify the process of managing permissions for smart contract interactions by enabling users to easily set up and manage permissions for all their interactions in a single gasless transaction. This will improve security on the blockchain and provide a more streamlined and user-friendly experience. Our solution will be particularly useful for DeFi newcomers and businesses and organizations that require a high level of security and control over their blockchain transactions.
+    Our startup is developing an Account Abstraction EIP 4337 for permission-based authentication on the blockchain. This solution aims to simplify the process of managing permissions for smart contract interactions by enabling users to easily set up and manage permissions for all their interactions in a single gasless transaction. This will improve security on the blockchain and provide a more streamlined and user-friendly experience. Our solution will be particularly useful for DeFi protocols, onchain games, businesses, and organizations that require a high level of security and control over their blockchain transactions.
 \end{abstract}
 \tableofcontents
 \section{Motivation}
@@ -27,13 +27,13 @@ At Permissive, we strongly believe in the potential of open-source software to d
 \paragraph{}
 However, our focus doesn't stop there. At Permissive, we recognize the importance of providing a great user experience to onboard the next billion users to the blockchain world. That's why we invest heavily in the design and usability of our platform. By providing an intuitive interface, we aim to make blockchain technology accessible to a wider audience, ultimately driving adoption and innovation.
 \paragraph{}
-To support our mission and cover the costs of platform development, we monetize through a small transaction fee. Every time a user initiates a transaction using the Permissive interface, a small fee of 0.01$-0.005$ is charged to their account. This fee allows us to continue developing and improving our platform, and it aligns with our values of accessibility and affordability.
+To support our mission and cover the costs of platform development, we monetize through a small transaction fee. Every time a user initiates a transaction using the Permissive interface, a small fee of 20\% of gas fees is charged to their account. This fee allows us to continue developing and improving our platform, and it aligns with our values of accessibility and affordability.
 \paragraph{}
 Permissive plans to develop a complete ecosystem for blockchain. This ecosystem will include innovative tools and resources to simplify the blockchain experience for users and developers, driving greater adoption and innovation.
 \section{Infrastructure}
 \paragraph{}
-The Permissive stack is designed to provide a seamless and secure user experience by utilizing both on-chain and off-chain computation. This approach allows for greater flexibility in the types of transactions that can be executed on the network, while also ensuring that users can engage with the platform safely and reliably. With the Permissive stack, users can enjoy the benefits of decentralized technology without having to worry about the complexities associated with traditional blockchain networks. Whether you are a developer looking to build decentralized applications or an end user seeking a more secure and efficient way to transact, the Permissive stack has something to offer. 
-\subsection{On-Chain}
+The Permissive stack is designed to provide a seamless and secure user experience by utilizing both onchain and offchain computation. This approach allows for greater flexibility in the types of transactions that can be executed on the network, while also ensuring that users can engage with the platform safely and reliably. With the Permissive stack, users can enjoy the benefits of decentralized technology without having to worry about the complexities associated with traditional blockchain networks. Whether you are a developer looking to build decentralized applications or an end user seeking a more secure and efficient way to transact, the Permissive stack has something to offer. 
+\subsection{Onchain}
 \paragraph{}
 As Permissive is based on the EIP-4337 it can deploy on any EVM chain supporting it. We will first deploy on the most used EVM  and EIP-4337 compatible blockchains like Ethereum, Arbitrum, Optimism, Polygon, BNB Chain, Gnosis Chain, Avalanche, and Fantom. We also plan to build on new ecosystems like Base to onboard a larger user base.
 \paragraph{}
@@ -127,12 +127,12 @@ interface IPermissiveAccount is IAccount {
 }
 \end{lstlisting}
 \paragraph{}
-Permissive has a custom factory for deploying Permissive Accounts directly with a user operation off-chain.
+Permissive has a custom factory for deploying Permissive Accounts directly with a user operation offchain.
 \subsection{WebApp}
 The Permissive app is composed of three main pages. The Operator, Authorization and Account page. The operator page is where the service or user wants to get permission over someone’s else address. To do so, the interface will allow him to create permissions sets and format them for blockchain compatibility. Once the Merkle root is computed, the app stores the permissions into IPNS with the corresponding Merkle root. Once done, the operator can copy the authorization URL to send it to the user.  The authorization page is the page where the user can see the permissions the operator wants on its account and grant them or not. (similar to web2 AUTH systems). Finally, the Account page is where the user can see all the permissions he has granted, revoke them or add increase their maximum fees or value.
 \subsection{CallData}
 \paragraph{}
-t the time of writing this whitepaper, function arguments are not verified against user permissions. This means that anyone can execute a function regardless of whether they have the necessary permissions or not. This could lead to security vulnerabilities and potential abuse of the system.
+At the time of writing this whitepaper, function arguments are not verified against user permissions. This means that operators can execute allowed functions with any arguments regardless of whether they have the necessary permissions or not. This could lead to security vulnerabilities and potential abuse of the system.
 \paragraph{}
 To tackle this issue, we are developing an allowance call data format that will allow for conditional and customizable arguments. This new format will enable us to verify user permissions before executing a function, ensuring that only authorized users can execute transactions that require specific permissions. As such, we will be releasing detailed documentation and a technical paper that outlines the allowance call data format and how it works.
 \subsection{Plugins, Modules \& SDKs}
